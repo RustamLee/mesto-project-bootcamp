@@ -1,0 +1,18 @@
+.profile__info-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    margin-top: 14px;
+    margin-bottom: 0;
+}
+
+@media (min-width:918px) {
+    .profile__info-subtitle {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 16px;
+        line-height: 21.78px;
+        text-align: start;
+        font-size: 18px;
+    }
+}

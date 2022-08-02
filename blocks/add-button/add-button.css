@@ -1,0 +1,26 @@
+.add-button{
+    background-image: url(../../images/addbtn.svg);
+    width: 282px;
+    height: 50px;
+    background-color: black;
+    border: none;
+    margin-top: 36px;
+    margin-bottom: 36px;
+    padding: 0;
+    cursor: pointer;
+    transition: 500ms linear;
+}
+
+.add-button:hover{
+    opacity: 0.6;
+}
+
+@media (min-width:918px) {
+    .add-button{
+        background-image: url(../../images/addbtnsmall.svg);
+        width: 150px;
+        margin-left: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

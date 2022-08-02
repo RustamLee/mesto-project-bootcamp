@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>mesto-project-bootcamp</title>
+</head>
+
+<body class="page">
+    <header class="header">
+        <img src="./images/Vector.svg" alt="логотип с названием приложения Место" class="header__logo">
+    </header>
+    <main>
+        <div class="popup popup_opened">
+            <div class="popup__container">
+                <button  class="popup__container-close"></button>
+                <p class="popup__container-heading">Редактировать профиль</p>
+                <input type="text" class="popup__container-field" placeholder="Жак-Ив Кусто">
+                <input type="text" class="popup__container-field" placeholder="Исследователь океана">
+                <button type="submit" class="popup__container-button">Сохранить</button>
+            </div>
+        </div>
+        <section class="profile">
+            <img src="./images/avatar_image.jpg" alt="аватар пользователя" class="profile__avatar">
+            <div class="profile__info">
+                <p class="profile__info-name">Жак-Ив Кусто
+                    <button class="profile__edit-button"></button>
+                </p>
+                <p class="profile__info-subtitle">Исследователь океана</p>
+            </div>
+            <button class="add-button"></button>
+        </section>
+        <section class="content">
+            <article class="content__item">
+                <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="старинный замок в городе Карачаевск"
+                    class="content__item-image">
+                <p class="content__title">Карачаевск<button class="content__like"></button>
+                </p>
+            </article>
+            <article class="content__item">
+                <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="старинный замок в городе Карачаевск"
+                    class="content__item-image">
+                <p class="content__title">Гора Эльбрус<button class="content__like"></button>
+                </p>
+            </article>
+            <article class="content__item">
+                <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="старинный замок в городе Карачаевск"
+                    class="content__item-image">
+                <p class="content__title">Домбай<button class="content__like"></button>
+                </p>
+            </article>
+            <article class="content__item">
+                <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="старинный замок в городе Карачаевск"
+                    class="content__item-image">
+                <p class="content__title">Карачаевск<button class="content__like"></button>
+                </p>
+            </article>
+            <article class="content__item">
+                <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="старинный замок в городе Карачаевск"
+                    class="content__item-image">
+                <p class="content__title">Гора Эльбрус<button class="content__like"></button>
+                </p>
+            </article>
+            <article class="content__item">
+                <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="старинный замок в городе Карачаевск"
+                    class="content__item-image">
+                <p class="content__title">Домбай<button class="content__like"></button>
+                </p>
+            </article>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+.content__title{
+   font-size: 24px;
+   font-weight: 900; 
+   max-width: 246px;
+   display: flex;
+   justify-content: space-between;
+   margin: auto;
+   min-height: 79px;
+   align-items: center;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
+}

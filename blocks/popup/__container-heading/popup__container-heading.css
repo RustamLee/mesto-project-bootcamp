@@ -1,0 +1,18 @@
+.popup__container-heading {
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 21.78px;
+    margin-top: 25px;
+    margin-bottom: 75px;
+}
+
+@media (min-width:918px) {
+    .popup__container-heading {
+        font-size: 24px;
+        line-height: 29.05px;
+        margin-top: 34px;
+        margin-bottom: 54px;
+        margin-right: auto;
+        margin-left: 36px;
+    }
+}

@@ -1,0 +1,13 @@
+.add-button__image{
+   width: 16px;
+   height: 16px;
+   border: 2px;
+   border-radius: 2px; 
+}
+
+@media (min-width:918px) {
+   .add-button__image{
+      width: 22px;
+      height: 22px;
+   }
+}
