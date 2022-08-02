@@ -1,14 +1,14 @@
-.content__like{
-    background-image: url(../../../images/like.svg);
-    border:none;
-    width: 22px;
-    height: 19px;
-    background-color: #FFFFFF;
-    cursor: pointer;
-    transition: 500ms linear;
-    padding: 0;
+.content__like {
+  background-image: url(../../../images/like.svg);
+  border: none;
+  width: 22px;
+  height: 19px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  transition: 500ms linear;
+  padding: 0;
 }
 
-.content__like:hover{
-    opacity: 0.6;
+.content__like:hover {
+  opacity: 0.6;
 }

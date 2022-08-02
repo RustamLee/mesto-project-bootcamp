@@ -1,23 +1,23 @@
-.content{
-    display: grid;
-    margin-left: 19px;
-    margin-right: 19px;
-    row-gap: 20px;
-    justify-content: center;
-    max-width: 880px;
-    align-self: center;
+.content {
+  display: grid;
+  margin-left: 19px;
+  margin-right: 19px;
+  row-gap: 20px;
+  justify-content: center;
+  max-width: 880px;
+  align-self: center;
 }
 
 @media (min-width:619px) {
-    .content{
-   grid-template-columns: auto auto; 
-   column-gap: 17px;
-    }
+  .content {
+    grid-template-columns: auto auto;
+    column-gap: 17px;
+  }
 }
 
 @media (min-width:918px) {
-    .content{
-   grid-template-columns: 1fr 1fr 1fr; 
-   margin: auto;
-    }
+  .content {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: auto;
+  }
 }
