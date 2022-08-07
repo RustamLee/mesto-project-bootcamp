@@ -12,6 +12,8 @@
   margin-bottom: 25px;
   margin-top: 15px;
   font-size: 14px;
+  line-height: 17px;
+  border-radius: 2px;
 }
 
 .popup__container-button:hover {

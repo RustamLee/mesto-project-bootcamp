@@ -1,0 +1,6 @@
+.profile__info-heading{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 22.25px;
+}

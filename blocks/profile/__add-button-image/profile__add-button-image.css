@@ -1,4 +1,4 @@
-.add-button__image {
+.profile__add-button-image {
   width: 16px;
   height: 16px;
   border: 2px;
@@ -6,7 +6,7 @@
 }
 
 @media (min-width:918px) {
-  .add-button__image {
+  .profile__add-button-image {
     width: 22px;
     height: 22px;
   }

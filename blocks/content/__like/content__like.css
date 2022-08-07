@@ -6,9 +6,10 @@
   background-color: #FFFFFF;
   cursor: pointer;
   transition: 500ms linear;
+  margin-right: 5px;
   padding: 0;
 }
 
 .content__like:hover {
-  opacity: 0.6;
+  opacity: 0.5;
 }

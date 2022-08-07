@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
@@ -16,59 +16,75 @@
   <main>
     <div class="popup popup_opened">
       <div class="popup__container">
-        <button type="button" class="popup__container-close"></button>
-        <p class="popup__container-heading">Редактировать профиль</p>
-        <input type="text" class="popup__container-field" placeholder="Жак-Ив Кусто">
-        <input type="text" class="popup__container-field" placeholder="Исследователь океана">
-        <button type="submit" class="popup__container-button">Сохранить</button>
+        <button type="button" class="popup__container-close" aria-label="Close"></button>
+        <form name="edit-profile" class="popup__edit-profile">
+          <h2 class="popup__container-heading">Редактировать профиль</h2>
+          <input name="profile-name" type="text" class="popup__container-field" placeholder="Жак-Ив Кусто">
+          <input name="profile-profession" type="text" class="popup__container-field"
+            placeholder="Исследователь океана">
+          <button type="submit" class="popup__container-button" aria-label="Save">Сохранить</button>
+        </form>
       </div>
     </div>
     <section class="profile">
       <img src="./images/avatar_image.jpg" alt="аватар пользователя" class="profile__avatar">
       <div class="profile__info">
-        <p class="profile__info-name">Жак-Ив Кусто
-          <button type="button" class="profile__edit-button"></button>
-        </p>
+        <div class="profile__info-heading">
+          <h1 class="profile__info-name">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__edit-button" aria-label="Edit"></button>
+        </div>
         <p class="profile__info-subtitle">Исследователь океана</p>
       </div>
-      <button type="button" class="add-button"></button>
+      <button type="button" class="profile__add-button" aria-label="Close"></button>
     </section>
     <section class="content">
       <article class="content__item">
         <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="старинный замок в городе Карачаевск"
           class="content__item-image">
-        <p class="content__title">Карачаевскhhhhhhhhhhhhhhhhhhh<button type="button" class="content__like"></button>
-        </p>
+        <div class="content__item-info">
+          <h3 class="content__title">Карачаевск</h3>
+          <button type="button" class="content__like" aria-label="Like"></button>
+        </div>
       </article>
       <article class="content__item">
         <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="старинный замок в городе Карачаевск"
           class="content__item-image">
-        <p class="content__title">Гора Эльбрус<button type="button" class="content__like"></button>
-        </p>
+        <div class="content__item-info">
+          <h3 class="content__title">Гора Эльбрус</h3>
+          <button type="button" class="content__like" aria-label="Like"></button>
+        </div>
       </article>
       <article class="content__item">
         <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="старинный замок в городе Карачаевск"
           class="content__item-image">
-        <p class="content__title">Домбай<button type="button" class="content__like"></button>
-        </p>
+        <div class="content__item-info">
+          <h3 class="content__title">Домбай</h3>
+          <button type="button" class="content__like" aria-label="Like"></button>
+        </div>
       </article>
       <article class="content__item">
         <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="старинный замок в городе Карачаевск"
           class="content__item-image">
-        <p class="content__title">Карачаевск<button type="button" class="content__like"></button>
-        </p>
+        <div class="content__item-info">
+          <h3 class="content__title">Карачаевск</h3>
+          <button type="button" class="content__like" aria-label="Like"></button>
+        </div>
       </article>
       <article class="content__item">
         <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="старинный замок в городе Карачаевск"
           class="content__item-image">
-        <p class="content__title">Гора Эльбрус<button type="button" class="content__like"></button>
-        </p>
+        <div class="content__item-info">
+          <h3 class="content__title">Гора Эльбрус</h3>
+          <button type="button" class="content__like" aria-label="Like"></button>
+        </div>
       </article>
       <article class="content__item">
         <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="старинный замок в городе Карачаевск"
           class="content__item-image">
-        <p class="content__title">Домбай<button type="button" class="content__like"></button>
-        </p>
+        <div class="content__item-info">
+          <h3 class="content__title">Домбай</h3>
+          <button type="button" class="content__like" aria-label="Like"></button>
+        </div>
       </article>
     </section>
   </main>
