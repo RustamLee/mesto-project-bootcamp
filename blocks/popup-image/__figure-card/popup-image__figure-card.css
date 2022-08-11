@@ -1,3 +1,5 @@
 .popup-image__figure-card{
   position: relative;
+  max-height: 75vh;
+  max-width: 75vw;
 }
