@@ -14,18 +14,39 @@
     <img src="./images/Vector.svg" alt="логотип с названием приложения Место" class="header__logo">
   </header>
   <main>
-    <div class="popup popup_opened">
+    <div class="popup">
       <div class="popup__container">
         <button type="button" class="popup__container-close" aria-label="Close"></button>
         <form name="edit-profile" class="popup__edit-profile">
           <h2 class="popup__container-heading">Редактировать профиль</h2>
-          <input name="profile-name" type="text" class="popup__container-field" placeholder="Жак-Ив Кусто">
-          <input name="profile-profession" type="text" class="popup__container-field"
-            placeholder="Исследователь океана">
+          <input id="profile-name" name="profile-name" type="text" class="popup__container-field">
+          <input id="profile-job" name="profile-job" type="text" class="popup__container-field">
           <button type="submit" class="popup__container-button" aria-label="Save">Сохранить</button>
         </form>
       </div>
     </div>
+    <div class="popup-new-place">
+      <div class="popup__container">
+        <button type="button" class="popup__container-close" aria-label="Close"></button>
+        <form name="edit-profile" class="popup__edit-profile">
+          <h2 class="popup__container-heading">Новое место</h2>
+          <input id="new-place-name" name="place-name" type="text" class="popup__container-field"
+            placeholder="Название">
+          <input id="new-place-src" name="place-src" type="url" class="popup__container-field"
+            placeholder="Ссылка на картинку">
+          <button type="submit" class="popup__container-button" aria-label="Save">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup-image">
+      <figure class="popup-image__figure-card">
+        <img class="popup-image__container" src="">
+        <figcaption class="popup-image__name"></figcaption>
+        <button type="button" class="popup-image__close-button" aria-label="Close"></button>
+      </figure>
+    </div>
+
     <section class="profile">
       <img src="./images/avatar_image.jpg" alt="аватар пользователя" class="profile__avatar">
       <div class="profile__info">
@@ -38,59 +59,23 @@
       <button type="button" class="profile__add-button" aria-label="Close"></button>
     </section>
     <section class="content">
-      <article class="content__item">
-        <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="старинный замок в городе Карачаевск"
-          class="content__item-image">
-        <div class="content__item-info">
-          <h3 class="content__title">Карачаевск</h3>
-          <button type="button" class="content__like" aria-label="Like"></button>
-        </div>
-      </article>
-      <article class="content__item">
-        <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="старинный замок в городе Карачаевск"
-          class="content__item-image">
-        <div class="content__item-info">
-          <h3 class="content__title">Гора Эльбрус</h3>
-          <button type="button" class="content__like" aria-label="Like"></button>
-        </div>
-      </article>
-      <article class="content__item">
-        <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="старинный замок в городе Карачаевск"
-          class="content__item-image">
-        <div class="content__item-info">
-          <h3 class="content__title">Домбай</h3>
-          <button type="button" class="content__like" aria-label="Like"></button>
-        </div>
-      </article>
-      <article class="content__item">
-        <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="старинный замок в городе Карачаевск"
-          class="content__item-image">
-        <div class="content__item-info">
-          <h3 class="content__title">Карачаевск</h3>
-          <button type="button" class="content__like" aria-label="Like"></button>
-        </div>
-      </article>
-      <article class="content__item">
-        <img src="./images/kirill-pershin-1404681-unsplash.jpg" alt="старинный замок в городе Карачаевск"
-          class="content__item-image">
-        <div class="content__item-info">
-          <h3 class="content__title">Гора Эльбрус</h3>
-          <button type="button" class="content__like" aria-label="Like"></button>
-        </div>
-      </article>
-      <article class="content__item">
-        <img src="./images/kirill-pershin-1556355-unsplash.jpg" alt="старинный замок в городе Карачаевск"
-          class="content__item-image">
-        <div class="content__item-info">
-          <h3 class="content__title">Домбай</h3>
-          <button type="button" class="content__like" aria-label="Like"></button>
-        </div>
-      </article>
+      <template id="content-item">
+        <article class="content__item">
+          <img src="" alt="" class="content__item-image">
+          <button type="button" class="content__trash" aria-label="Delete"></button>
+          <div class="content__item-info">
+            <h3 class="content__title"></h3>
+            <button type="button" class="content__like" aria-label="Like"></button>
+          </div>
+        </article>
+      </template>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
+  <script src="./scripts/index.js"></script>
+
 </body>
 
 </html>

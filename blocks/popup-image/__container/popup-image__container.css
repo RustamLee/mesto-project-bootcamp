@@ -1,0 +1,13 @@
+.popup-image__container {
+  min-width: 282px;
+  width: 100%;
+  position: relative;
+}
+
+@media (min-width:918px) {
+  .popup-image__container {
+    max-width: 75vw;
+    max-height: 75vw;
+  }
+
+}

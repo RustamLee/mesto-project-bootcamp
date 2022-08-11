@@ -2,10 +2,13 @@
   background-color: #FFFFFF;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
-@media (min-width:918px) {
+
+@media (min-width:619px) {
   .content__item {
     max-width: 282px;
+    max-height: 361px;
   }
 }

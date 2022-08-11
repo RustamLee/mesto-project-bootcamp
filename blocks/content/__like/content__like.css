@@ -1,13 +1,13 @@
 .content__like {
   background-image: url(../../../images/like.svg);
+  background-repeat: no-repeat;
   border: none;
   width: 22px;
   height: 19px;
   background-color: #FFFFFF;
   cursor: pointer;
   transition: 500ms linear;
-  margin-right: 5px;
-  padding: 0;
+  padding-left: 16px;
 }
 
 .content__like:hover {

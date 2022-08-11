@@ -1,14 +1,9 @@
 .content__like_active{
     background-image: url(../../../../images/like_active.svg);
+    background-repeat: no-repeat;
     border: none;
     width: 22px;
     height: 19px;
     cursor: pointer;
-    transition: 500ms linear;
-    margin-right: 5px;
-    padding: 0;
-  }
-
-  .content__like:hover {
-    opacity: 0.5;
+    padding-left: 16px;
   }
