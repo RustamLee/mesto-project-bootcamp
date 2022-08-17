@@ -2,4 +2,12 @@
   border-bottom: 1px solid rgb(84, 84, 84 .7);
   max-width: 880px;
   margin: auto;
+  border-bottom: 1px solid #545454;
+  max-height: 84px;
+}
+
+@media (min-width: 918px) {
+  .header {
+    min-height: 119px;
+  }
 }

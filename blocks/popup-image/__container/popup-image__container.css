@@ -2,4 +2,6 @@
   min-width: 282px;
   width: 100%;
   position: relative;
+  max-height: 75vh;
+  max-width: 75vw;
 }

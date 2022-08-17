@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="./pages/style.css">
   <title>mesto-project-bootcamp</title>
 </head>
 
@@ -14,9 +14,9 @@
     <img src="./images/Vector.svg" alt="логотип с названием приложения Место" class="header__logo">
   </header>
   <main>
-    <div class="popup">
+    <div class="popup popup__profile ">
       <div class="popup__container">
-        <button type="button" class="popup__container-close" aria-label="Close"></button>
+        <button type="button" class="popup__close" aria-label="Close"></button>
         <form name="edit-profile" class="popup__edit-profile">
           <h2 class="popup__container-heading">Редактировать профиль</h2>
           <input id="profile-name" name="profile-name" type="text" class="popup__container-field">
@@ -25,9 +25,9 @@
         </form>
       </div>
     </div>
-    <div class="popup-new-place">
+    <div class="popup popup-new-place ">
       <div class="popup__container">
-        <button type="button" class="popup__container-close" aria-label="Close"></button>
+        <button type="button" class="popup__close" aria-label="Close"></button>
         <form name="edit-profile" class="popup__edit-profile">
           <h2 class="popup__container-heading">Новое место</h2>
           <input id="new-place-name" name="place-name" type="text" class="popup__container-field"
@@ -38,15 +38,13 @@
         </form>
       </div>
     </div>
-
-    <div class="popup-image">
-      <div class="popup-image__figure-card">
+    <div class="popup popup-image ">
+      <div class="popup-image__box">
+        <button type="button" class="popup__close " aria-label="Close"></button>
         <img class="popup-image__container" src="#" alt="#">
         <p class="popup-image__name"></p>
-        <button type="button" class="popup-image__close-button" aria-label="Close"></button>
       </div>
     </div>
-
     <section class="profile">
       <img src="./images/avatar_image.jpg" alt="аватар пользователя" class="profile__avatar">
       <div class="profile__info">
@@ -74,7 +72,7 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
-  <script src="./scripts/index.js"></script>
+  <script src="./scripts/script.js"></script>
 
 </body>
 
