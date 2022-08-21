@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/style.css">
+  <link rel="stylesheet" href="./pages/index.css">
   <title>mesto-project-bootcamp</title>
+  <link rel="icon" href="favicon.ico">
 </head>
 
 <body class="page">
@@ -17,24 +18,40 @@
     <div class="popup popup__profile ">
       <div class="popup__container">
         <button type="button" class="popup__close" aria-label="Close"></button>
-        <form name="edit-profile" class="popup__edit-profile">
+        <form name="edit-profile" id="edit-profile" class="popup__edit-profile" novalidate>
           <h2 class="popup__container-heading">Редактировать профиль</h2>
-          <input id="profile-name" name="profile-name" type="text" class="popup__container-field">
-          <input id="profile-job" name="profile-job" type="text" class="popup__container-field">
-          <button type="submit" class="popup__container-button" aria-label="Save">Сохранить</button>
+          <label class="popup__input-box">
+            <input id="profile-name" name="profile-name" type="text" class="popup__container-field" required
+              minlength="2" maxlength="40">
+            <span class="popup__input-error profile-name-error"></span>
+          </label>
+          <label class="popup__input-box">
+            <input id="profile-job" name="profile-job" type="text" class="popup__container-field" required minlength="2"
+              maxlength="200">
+            <span class="popup__input-error profile-job-error"></span>
+          </label>
+          <button name="save-profile" id="save-profile" type="submit" class="popup__container-button"
+            aria-label="Save">Сохранить</button>
         </form>
       </div>
     </div>
-    <div class="popup popup-new-place ">
+    <div class="popup popup-new-place">
       <div class="popup__container">
         <button type="button" class="popup__close" aria-label="Close"></button>
-        <form name="edit-profile" class="popup__edit-profile">
+        <form name="edit-profile" class="popup__edit-profile" novalidate>
           <h2 class="popup__container-heading">Новое место</h2>
-          <input id="new-place-name" name="place-name" type="text" class="popup__container-field"
-            placeholder="Название">
-          <input id="new-place-src" name="place-src" type="url" class="popup__container-field"
-            placeholder="Ссылка на картинку">
-          <button type="submit" class="popup__container-button" aria-label="Save">Создать</button>
+          <label class="popup__input-box">
+            <input id="new-place-name" name="place-name" type="text" class="popup__container-field"
+              placeholder="Название" required minlength="2" maxlength="30">
+            <span class="popup__input-error new-place-name-error"></span>
+          </label>
+          <label class="popup__input-box">
+            <input id="new-place-src" name="place-src" type="url" class="popup__container-field"
+              placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error new-place-src-error"></span>
+          </label>
+          <button name="add-place" id="add-place" type="submit" class="popup__container-button"
+            aria-label="Save">Создать</button>
         </form>
       </div>
     </div>
@@ -72,7 +89,7 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
-  <script src="./scripts/script.js"></script>
+  <script src="./scripts/index.js"></script>
 
 </body>
 
