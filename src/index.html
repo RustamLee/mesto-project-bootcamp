@@ -5,14 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>mesto-project-bootcamp</title>
   <link rel="icon" href="favicon.ico">
 </head>
 
 <body class="page">
   <header class="header">
-    <img src="./images/Vector.svg" alt="логотип с названием приложения Место" class="header__logo">
+    <img src= "<%=require('./images/Vector.svg')%>" alt="логотип с названием приложения Место" class="header__logo">
   </header>
   <main>
     <div class="popup popup__profile ">
@@ -63,7 +62,7 @@
       </div>
     </div>
     <section class="profile">
-      <img src="./images/avatar_image.jpg" alt="аватар пользователя" class="profile__avatar">
+      <img src= "<%=require('./images/avatar_image.jpg')%>"  alt="аватар пользователя" class="profile__avatar">
       <div class="profile__info">
         <div class="profile__info-heading">
           <h1 class="profile__info-name">Жак-Ив Кусто</h1>
@@ -89,8 +88,6 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
-  <script src="./scripts/index.js"></script>
-
 </body>
 
 </html>
