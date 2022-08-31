@@ -1,9 +1,26 @@
 
 import '../../src/index.css';
-import {editProfile, popupProfile, popupNewPlace, newPlaceButton, closeButtons, yourName, nameInput, yourJob, jobInput, inputPlace, inputSrc, formNewPlace, formProfile} from './constants.js';
-import {closePopup} from './modal.js';
-import {openPopup} from './Card.js';
-import {addCards} from './Card.js';
+import { editProfile, popupProfile, popupNewPlace, newPlaceButton, closeButtons, yourName, nameInput, yourJob, jobInput, inputPlace, inputSrc, formNewPlace, formProfile, popupAvatar, popupAvatarEdit, formAvatar, inputAvatar, avatarImage, cardOwner } from './constants.js';
+import { closePopup } from './modal.js';
+import { openPopup } from './card.js';
+import { addCards } from './card.js';
+import {getProfileInfo, getCards} from './api.js';
+import {createCard} from './card.js';
+import {sentProfileInfo, sentNewCard, sentNewAvatar} from './api.js'
+
+//открытие попап редактирования аватар
+popupAvatarEdit.addEventListener('click', function (event) {
+  inputAvatar.value = '';
+  openPopup(popupAvatar);
+});
+
+//функция замены ссылки на аватар
+formAvatar.addEventListener('submit', (event) => {
+  event.preventDefault();
+  sentNewAvatar();
+  avatarImage.style.backgroundImage = `url(${inputAvatar.value})`;
+  closePopup(popupAvatar);
+});
 
 // закрытие всех попап по крестику
 closeButtons.forEach((button) => {
@@ -13,14 +30,14 @@ closeButtons.forEach((button) => {
 
 //popup редактирования профиля
 editProfile.addEventListener('click', function (_event) {
-  nameInput.value = yourName.textContent;
-  jobInput.value = yourJob.textContent;
+nameInput.value = yourName.textContent;
+jobInput.value = yourJob.textContent;
   openPopup(popupProfile);
 });
- formProfile.addEventListener('submit', (event) => {
+
+formProfile.addEventListener('submit', (event) => {
   event.preventDefault();
-  yourName.textContent = nameInput.value;
-  yourJob.textContent = jobInput.value;
+  sentProfileInfo ();
   closePopup(popupProfile);
 });
 
@@ -52,19 +69,7 @@ formNewPlace.addEventListener('submit', addCards);
 
 //валидация форм
 import { showError, hideError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListener, enablevalidation } from './validate.js';
-
-
-/*const restartValidation = (formElement, options) => {
-  const inputList = Array.from(formElement.querySelectorAll(options.inputSelector));
-  const buttonElement = formElement.querySelector(options.submitButtonSelector);
-  inputList.forEach((inputElement) => {
-    checkInputValidity(formElement, inputElement);
-    toggleButtonState(inputList, buttonElement);
-  });
-};*/
-
-// включение валидации вызовом enableValidation
-// все настройки передаются при вызове
+import { Promise } from 'core-js';
 
 //options
 enablevalidation({
@@ -75,4 +80,3 @@ enablevalidation({
   inputErrorClass: 'popup__container-field_error',
   errorClass: 'popup__input-error_active',
 });
-

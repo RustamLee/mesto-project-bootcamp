@@ -9,7 +9,7 @@
   transition: 500ms linear;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 25px;
+  margin-bottom: 36px;
   margin-top: 15px;
   font-size: 14px;
   line-height: 17px;
@@ -24,7 +24,6 @@
   .popup__container-button {
     min-width: 358px;
     min-height: 50px;
-    margin-bottom: 37px;
     margin-top: 20px;
     font-size: 18px;
     line-height: 21.78px;

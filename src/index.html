@@ -11,9 +11,26 @@
 
 <body class="page">
   <header class="header">
-    <img src= "<%=require('./images/Vector.svg')%>" alt="логотип с названием приложения Место" class="header__logo">
+    <img src="<%=require('./images/Vector.svg')%>" alt="логотип с названием приложения Место" class="header__logo">
   </header>
   <main>
+
+    <!-- попап редактирования аватара-->
+    <div class="popup popup__avatar">
+      <div class="popup__container">
+        <button type="button" class="popup__close" aria-label="Close"></button>
+        <form name="edit-avatar" id="edit-avatar" class="popup__edit-profile" novalidate>
+          <h2 class="popup__container-heading">Обновить аватар</h2>
+          <label class="popup__input-box">
+            <input id="avatar-edit" name="avatar-edit" type="url" class="popup__container-field" placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error avatar-edit-error"></span>
+          </label>
+          <button name="save-avatar" id="save-avatar" type="submit" class="popup__container-button"
+            aria-label="Save">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
     <div class="popup popup__profile ">
       <div class="popup__container">
         <button type="button" class="popup__close" aria-label="Close"></button>
@@ -62,13 +79,15 @@
       </div>
     </div>
     <section class="profile">
-      <img src= "<%=require('./images/avatar_image.jpg')%>"  alt="аватар пользователя" class="profile__avatar">
+      <div class="profile__avatar">
+        <button class="profile__avatar-button"></button>
+      </div>
       <div class="profile__info">
         <div class="profile__info-heading">
-          <h1 class="profile__info-name">Жак-Ив Кусто</h1>
+          <h1 class="profile__info-name"></h1>
           <button type="button" class="profile__edit-button" aria-label="Edit"></button>
         </div>
-        <p class="profile__info-subtitle">Исследователь океана</p>
+        <p class="profile__info-subtitle"></p>
       </div>
       <button type="button" class="profile__add-button" aria-label="Close"></button>
     </section>
@@ -79,7 +98,10 @@
           <button type="button" class="content__trash" aria-label="Delete"></button>
           <div class="content__item-info">
             <h3 class="content__title"></h3>
-            <button type="button" class="content__like" aria-label="Like"></button>
+            <div class="content__like-container">
+              <button type="button" class="content__like" aria-label="Like"></button>
+              <span class="content__like-counter">0</span>
+            </div>
           </div>
         </article>
       </template>
@@ -91,3 +113,4 @@
 </body>
 
 </html>
+

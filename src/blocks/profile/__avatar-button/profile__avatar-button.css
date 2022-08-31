@@ -1,0 +1,19 @@
+.profile__avatar-button {
+  background: transparent;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-position: center;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border:none;
+  z-index: 3;
+}
+@media (min-width:918px) {
+  .profile__avatar-button {
+    margin: 0;
+  }
+}
+
