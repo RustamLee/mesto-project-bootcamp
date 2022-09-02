@@ -1,6 +1,7 @@
 
-import { yourName, yourJob, avatarImage, contentItems, nameInput, jobInput, inputPlace, inputSrc, inputAvatar, cardOwner } from './constants.js';
+import { yourName, yourJob, avatarImage, contentItems, nameInput, jobInput, inputPlace, inputSrc, inputAvatar } from './constants.js';
 import { createCard } from './card.js';
+export let userId;
 
 //достаем данные пользователя с сервера
 export function getProfileInfo() {
@@ -19,8 +20,8 @@ export function getProfileInfo() {
       yourName.textContent = result.name;
       yourJob.textContent = result.about;
       avatarImage.style.backgroundImage = `url(${result.avatar})`;
-      cardOwner = result._id;
-      console.log(cardOwner);
+      userId = result._id;
+      console.log(userId);
     })
     .catch((err) => {
       console.log(err)
@@ -110,5 +111,3 @@ export function sentNewAvatar() {
     console.log(res);
   })
 };
-
-//

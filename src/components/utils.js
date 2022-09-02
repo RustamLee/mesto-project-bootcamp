@@ -10,4 +10,3 @@ export function toggleButtonState(inputList, buttonElement, options) {
     buttonElement.removeAttribute("disabled");
   }
 };
-

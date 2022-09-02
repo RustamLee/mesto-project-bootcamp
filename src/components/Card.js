@@ -3,20 +3,23 @@
 import { initialCards, contentItems, formNewPlace, popupNewPlace, popupWithImage} from "./constants.js";
 import { closePopup } from "./modal.js";
 import {getCards} from "./index.js";
-import {sentNewCard} from "./api.js"
+import {sentNewCard, userId} from "./api.js"
 
 export function createCard(item) {
   const contentItemTemplate = document.getElementById('content-item').content;
   const newContentItem = contentItemTemplate.querySelector('.content__item').cloneNode(true);
   const likeCounter = newContentItem.querySelector('.content__like-counter');
+  const imageTrash = newContentItem.querySelector('.content__trash');
   newContentItem.querySelector('.content__title').textContent = item.name;
   newContentItem.querySelector('.content__item-image').alt = item.name;
   newContentItem.querySelector('.content__item-image').src = item.link;
   newContentItem.querySelector('.content__like').addEventListener('click', function (event) {
     event.target.classList.toggle('content__like_active');
-    likeCounter.textContent = +1;
-  })
-  newContentItem.querySelector('.content__trash').addEventListener('click', function (event) {
+  });
+  if (item.owner._id !== userId){
+    imageTrash.remove();
+ }
+ imageTrash.addEventListener('click', function (event) {
     (event.target.closest('.content__item')).remove();
   });
   newContentItem.querySelector('.content__item-image').addEventListener('click', function (event) {

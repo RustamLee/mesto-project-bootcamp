@@ -1,4 +1,3 @@
-
 export const editProfile = document.querySelector('.profile__edit-button');
 export const popupProfile = document.querySelector('.popup__profile');
 export const popupNewPlace = document.querySelector('.popup-new-place');
@@ -19,4 +18,4 @@ export const formNewPlace = popupNewPlace.querySelector('.popup__edit-profile');
 export const formAvatar = popupAvatar.querySelector('#edit-avatar');
 export const inputAvatar = document.querySelector('#avatar-edit');
 export const avatarImage = document.querySelector('.profile__avatar');
-export let cardOwner;
+

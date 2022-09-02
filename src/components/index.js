@@ -1,4 +1,3 @@
-
 import '../../src/index.css';
 import { editProfile, popupProfile, popupNewPlace, newPlaceButton, closeButtons, yourName, nameInput, yourJob, jobInput, inputPlace, inputSrc, formNewPlace, formProfile, popupAvatar, popupAvatarEdit, formAvatar, inputAvatar, avatarImage, cardOwner } from './constants.js';
 import { closePopup } from './modal.js';
