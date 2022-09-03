@@ -3,7 +3,7 @@
 import { initialCards, contentItems, formNewPlace, popupNewPlace, popupWithImage} from "./constants.js";
 import { closePopup } from "./modal.js";
 import {getCards} from "./index.js";
-import {sentNewCard, userId} from "./api.js"
+import {sentNewCard, userId, deleteCard, deleteCardByOwner} from "./api.js"
 
 export function createCard(item) {
   const contentItemTemplate = document.getElementById('content-item').content;
@@ -13,23 +13,24 @@ export function createCard(item) {
   newContentItem.querySelector('.content__title').textContent = item.name;
   newContentItem.querySelector('.content__item-image').alt = item.name;
   newContentItem.querySelector('.content__item-image').src = item.link;
+  newContentItem.id = item._id;
   newContentItem.querySelector('.content__like').addEventListener('click', function (event) {
     event.target.classList.toggle('content__like_active');
   });
   if (item.owner._id !== userId){
-    imageTrash.remove();
+  imageTrash.remove();
+ } else {
+  imageTrash.addEventListener('click', function () {
+    deleteCardByOwner(newContentItem);
+  })
  }
- imageTrash.addEventListener('click', function (event) {
-    (event.target.closest('.content__item')).remove();
-  });
   newContentItem.querySelector('.content__item-image').addEventListener('click', function (event) {
-    popupWithImage.querySelector('.popup-image__container').src = event.target.src;
-    popupWithImage.querySelector('.popup-image__name').textContent = event.target.alt;
+  popupWithImage.querySelector('.popup-image__container').src = event.target.src;
+  popupWithImage.querySelector('.popup-image__name').textContent = event.target.alt;
     openPopup(popupWithImage);
   })
   return newContentItem;
 };
-
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
 };
@@ -43,6 +44,5 @@ export function addCards(event) {
     link: document.getElementById('new-place-src').value,
   };
   contentItems.prepend(createCard(item));
-  formNewPlace.reset();
   closePopup(popupNewPlace);
 };

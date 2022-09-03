@@ -21,7 +21,6 @@ export function getProfileInfo() {
       yourJob.textContent = result.about;
       avatarImage.style.backgroundImage = `url(${result.avatar})`;
       userId = result._id;
-      console.log(userId);
     })
     .catch((err) => {
       console.log(err)
@@ -64,7 +63,10 @@ export function sentProfileInfo() {
     })
   })
   .then((res) => {
-    return res.json();
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
   })
   .then((res) => {
     getProfileInfo();
@@ -85,7 +87,10 @@ export function sentNewCard() {
     })
   })
   .then((res) => {
-    return res.json();
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
   })
   .then((res) => {
     console.log(res);
@@ -105,9 +110,39 @@ export function sentNewAvatar() {
     })
   })
   .then((res) => {
-    return res.json();
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
   })
   .then((res) => {
     console.log(res);
+  })
+};
+
+// функция удаления карточки
+export function deleteCard (id){
+  return fetch(`https://nomoreparties.co/v1/wbc-cohort-1/cards/${id}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: '3dd89b95-5c6a-443c-a15c-23b145a16389',
+      'Content-Type': 'application/json'
+    },
+  })
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  })
+};
+
+export function deleteCardByOwner (Card){
+  return deleteCard (Card.id)
+  .then (function() {
+    Card.remove();
+  })
+  .catch((err) => {
+    console.log(err)
   })
 };

@@ -5,7 +5,7 @@ import { openPopup } from './card.js';
 import { addCards } from './card.js';
 import {getProfileInfo, getCards} from './api.js';
 import {createCard} from './card.js';
-import {sentProfileInfo, sentNewCard, sentNewAvatar} from './api.js'
+import {sentProfileInfo, sentNewCard, sentNewAvatar, deleteCardByOwner, deleteCard} from './api.js'
 
 //открытие попап редактирования аватар
 popupAvatarEdit.addEventListener('click', function (event) {
