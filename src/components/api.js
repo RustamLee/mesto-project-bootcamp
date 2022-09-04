@@ -1,5 +1,5 @@
 
-import { yourName, yourJob, avatarImage, contentItems, nameInput, jobInput, inputPlace, inputSrc, inputAvatar } from './constants.js';
+import { yourName, yourJob, avatarImage, contentItems, nameInput, jobInput, inputPlace, inputSrc, inputAvatar, imageTrash, itemImage } from './constants.js';
 import { createCard } from './card.js';
 export let userId;
 
@@ -25,8 +25,7 @@ export function getProfileInfo() {
     .catch((err) => {
       console.log(err)
     })
-}
-getProfileInfo();
+};
 
 //достаем карточки с сервера
 let getCards = fetch('https://nomoreparties.co/v1/wbc-cohort-1/cards', {
@@ -90,10 +89,10 @@ export function sentNewCard() {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Ошибка: ${res.status}`);
+      return Promise.reject(`Ошибка: ${res.status}`);
   })
   .then((res) => {
-    console.log(res);
+    contentItems.prepend(createCard(res));
   })
 };
 
@@ -121,6 +120,16 @@ export function sentNewAvatar() {
 };
 
 // функция удаления карточки
+
+export function deleteCardByOwner (item){
+  return deleteCard (item.id)
+  .then (function() {
+    item.remove();
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+};
 export function deleteCard (id){
   return fetch(`https://nomoreparties.co/v1/wbc-cohort-1/cards/${id}`, {
     method: 'DELETE',
@@ -134,15 +143,5 @@ export function deleteCard (id){
       return res.json();
     }
     return Promise.reject(`Ошибка: ${res.status}`);
-  })
-};
-
-export function deleteCardByOwner (Card){
-  return deleteCard (Card.id)
-  .then (function() {
-    Card.remove();
-  })
-  .catch((err) => {
-    console.log(err)
   })
 };

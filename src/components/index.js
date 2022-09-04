@@ -1,11 +1,13 @@
 import '../../src/index.css';
-import { editProfile, popupProfile, popupNewPlace, newPlaceButton, closeButtons, yourName, nameInput, yourJob, jobInput, inputPlace, inputSrc, formNewPlace, formProfile, popupAvatar, popupAvatarEdit, formAvatar, inputAvatar, avatarImage, cardOwner } from './constants.js';
+import { editProfile, popupProfile, popupNewPlace, newPlaceButton, closeButtons, yourName, nameInput, yourJob, jobInput, inputPlace, inputSrc, formNewPlace, formProfile, popupAvatar, popupAvatarEdit, formAvatar, inputAvatar, avatarImage, cardOwne,itemImage } from './constants.js';
 import { closePopup } from './modal.js';
 import { openPopup } from './card.js';
-import { addCards } from './card.js';
 import {getProfileInfo, getCards} from './api.js';
 import {createCard} from './card.js';
 import {sentProfileInfo, sentNewCard, sentNewAvatar, deleteCardByOwner, deleteCard} from './api.js'
+
+//загрузка данных пользователя
+getProfileInfo();
 
 //открытие попап редактирования аватар
 popupAvatarEdit.addEventListener('click', function (event) {
@@ -63,8 +65,14 @@ document.addEventListener('click', function (evt) {
   }
 })
 
-//слушатель для карточки
-formNewPlace.addEventListener('submit', addCards);
+//слушатель сохранения новой карточки
+formNewPlace.addEventListener('submit', saveNewCard);
+function saveNewCard(event){
+  event.preventDefault();
+  sentNewCard();
+  closePopup(popupNewPlace);
+}
+
 
 //валидация форм
 import { showError, hideError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListener, enablevalidation } from './validate.js';
