@@ -20,12 +20,12 @@ export function createCard(item) {
 likeButton.addEventListener('click', (event =>{
   if (likeButton.classList.contains('content__like_active')){
     likeButton.classList.remove('content__like_active');
-    likeCounter.textContent = Number(item.likes.length)-1;
-    deleteLike(newContentItem.id);
+    //likeCounter.textContent = Number(item.likes.length)-1;
+    deleteLike(newContentItem);
   } else {
       likeButton.classList.add('content__like_active');
-      likeCounter.textContent = Number(item.likes.length) +1;
-    sentLike(newContentItem.id);
+      //likeCounter.textContent = Number(item.likes.length) +1;
+    sentLike(newContentItem);
   }
 }));
 if (item.likes.length !==0) {

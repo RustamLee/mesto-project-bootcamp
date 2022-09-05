@@ -148,8 +148,8 @@ export function deleteCard (id){
 };
 
 //отправка лайка
-export function sentLike(id) {
-  fetch(`https://nomoreparties.co/v1/wbc-cohort-1/cards/likes/${id}`, {
+export function sentLike(newContentItem) {
+  fetch(`https://nomoreparties.co/v1/wbc-cohort-1/cards/likes/${newContentItem.id}`, {
     method: 'PUT',
     headers: {
       authorization: '3dd89b95-5c6a-443c-a15c-23b145a16389',
@@ -166,13 +166,14 @@ export function sentLike(id) {
   })
   .then((res) => {
     console.log(res.likes.length);
-    //likeCounter.textContent = Number(res.likes.length)+1;
+    const likeCounter = newContentItem.querySelector('.content__like-counter');
+    likeCounter.textContent = Number(res.likes.length);
   })
 };
 
 //снятие лайка
-export function deleteLike(id) {
-  fetch(`https://nomoreparties.co/v1/wbc-cohort-1/cards/likes/${id}`, {
+export function deleteLike(newContentItem) {
+  fetch(`https://nomoreparties.co/v1/wbc-cohort-1/cards/likes/${newContentItem.id}`, {
     method: 'DELETE',
     headers: {
       authorization: '3dd89b95-5c6a-443c-a15c-23b145a16389',
@@ -189,6 +190,7 @@ export function deleteLike(id) {
   })
   .then((res) => {
     console.log(res.likes.length);
-   // likeCounter.textContent = Number(res.likes.length)+1;
+    const likeCounter = newContentItem.querySelector('.content__like-counter');
+    likeCounter.textContent = Number(res.likes.length);
   })
 };
