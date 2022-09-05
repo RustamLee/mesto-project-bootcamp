@@ -1,8 +1,6 @@
 
 //ВАЛИДАЦИЯ ФОРМ
 
-import {toggleButtonState} from './utils.js';
-
 //обработчики ошибок
 export const showError = (formElement, inputElement, errorMessage, options) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -31,14 +29,14 @@ export function hasInvalidInput(inputList) {
   });
 };
 
-export const setEventListener = (formElement,options) => {
+export const setEventListener = (formElement, options) => {
   const inputList = Array.from(formElement.querySelectorAll(options.inputSelector));
   const buttonElement = formElement.querySelector(options.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement,options);
+  toggleButtonState(inputList, buttonElement, options);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement,options);
-      toggleButtonState(inputList, buttonElement,options);
+      checkInputValidity(formElement, inputElement, options);
+      toggleButtonState(inputList, buttonElement, options);
     });
   });
 };
@@ -48,4 +46,15 @@ export const enablevalidation = (options) => {
   formList.forEach((formElement) => {
     setEventListener(formElement, options);
   });
+};
+
+
+export function toggleButtonState(inputList, buttonElement, options) {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(options.inactiveButtonClass);
+    buttonElement.setAttribute("disabled", "disabled");
+  } else {
+    buttonElement.classList.remove(options.inactiveButtonClass);
+    buttonElement.removeAttribute("disabled");
+  }
 };

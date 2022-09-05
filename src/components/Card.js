@@ -16,21 +16,19 @@ export function createCard(item) {
   itemImage.src = item.link;
   newContentItem.id = item._id;
   likeCounter.textContent = Number(item.likes.length);
-//счетчик лайков
-likeButton.addEventListener('click', (event =>{
-  if (likeButton.classList.contains('content__like_active')){
-    likeButton.classList.remove('content__like_active');
-    //likeCounter.textContent = Number(item.likes.length)-1;
-    deleteLike(newContentItem);
-  } else {
+  //счетчик лайков
+  likeButton.addEventListener('click', (event => {
+    if (likeButton.classList.contains('content__like_active')) {
+      likeButton.classList.remove('content__like_active');
+      deleteLike(newContentItem);
+    } else {
       likeButton.classList.add('content__like_active');
-      //likeCounter.textContent = Number(item.likes.length) +1;
-    sentLike(newContentItem);
-  }
-}));
-if (item.likes.length !==0) {
+      sentLike(newContentItem);
+    }
+  }));
+  if (item.likes.length !== 0) {
     item.likes.forEach(element => {
-      if(element._id === userId){
+      if (element._id === userId) {
         likeButton.classList.add('content__like_active');
       }
     });
@@ -38,7 +36,7 @@ if (item.likes.length !==0) {
   if (item.owner._id !== userId) {
     imageTrash.remove();
   } else {
-    imageTrash.addEventListener('click', function(){
+    imageTrash.addEventListener('click', function () {
       deleteCardByOwner(newContentItem)
     })
   }

@@ -42,7 +42,6 @@ let getCards = fetch('https://nomoreparties.co/v1/wbc-cohort-1/cards', {
   .then((result) => {
     result.forEach(item => {
       contentItems.prepend(createCard(item));
-
     })
   })
   .catch((err) => {
@@ -170,7 +169,6 @@ export function sentLike(newContentItem) {
     likeCounter.textContent = Number(res.likes.length);
   })
 };
-
 //снятие лайка
 export function deleteLike(newContentItem) {
   fetch(`https://nomoreparties.co/v1/wbc-cohort-1/cards/likes/${newContentItem.id}`, {
