@@ -1,6 +1,6 @@
 
 import { yourName, yourJob, avatarImage, contentItems, nameInput, jobInput, inputPlace, inputSrc, inputAvatar, imageTrash, itemImage } from './constants.js';
-import { createCard } from './card.js';
+import { createCard, likeCounter} from './card.js';
 export let userId;
 
 //достаем данные пользователя с сервера
@@ -42,6 +42,7 @@ let getCards = fetch('https://nomoreparties.co/v1/wbc-cohort-1/cards', {
   .then((result) => {
     result.forEach(item => {
       contentItems.prepend(createCard(item));
+
     })
   })
   .catch((err) => {
@@ -143,5 +144,51 @@ export function deleteCard (id){
       return res.json();
     }
     return Promise.reject(`Ошибка: ${res.status}`);
+  })
+};
+
+//отправка лайка
+export function sentLike(id) {
+  fetch(`https://nomoreparties.co/v1/wbc-cohort-1/cards/likes/${id}`, {
+    method: 'PUT',
+    headers: {
+      authorization: '3dd89b95-5c6a-443c-a15c-23b145a16389',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+    })
+  })
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+      return Promise.reject(`Ошибка: ${res.status}`);
+  })
+  .then((res) => {
+    console.log(res.likes.length);
+    //likeCounter.textContent = Number(res.likes.length)+1;
+  })
+};
+
+//снятие лайка
+export function deleteLike(id) {
+  fetch(`https://nomoreparties.co/v1/wbc-cohort-1/cards/likes/${id}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: '3dd89b95-5c6a-443c-a15c-23b145a16389',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+    })
+  })
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+      return Promise.reject(`Ошибка: ${res.status}`);
+  })
+  .then((res) => {
+    console.log(res.likes.length);
+   // likeCounter.textContent = Number(res.likes.length)+1;
   })
 };

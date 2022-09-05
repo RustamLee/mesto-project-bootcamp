@@ -1,9 +1,8 @@
 import '../../src/index.css';
 import { editProfile, popupProfile, popupNewPlace, newPlaceButton, closeButtons, yourName, nameInput, yourJob, jobInput, inputPlace, inputSrc, formNewPlace, formProfile, popupAvatar, popupAvatarEdit, formAvatar, inputAvatar, avatarImage, cardOwne,itemImage } from './constants.js';
-import { closePopup } from './modal.js';
-import { openPopup } from './card.js';
+import { closePopup, openPopup } from './modal.js';
 import {getProfileInfo, getCards} from './api.js';
-import {createCard} from './card.js';
+import {createCard, handleLike} from './card.js';
 import {sentProfileInfo, sentNewCard, sentNewAvatar, deleteCardByOwner, deleteCard} from './api.js'
 
 //загрузка данных пользователя
@@ -87,3 +86,4 @@ enablevalidation({
   inputErrorClass: 'popup__container-field_error',
   errorClass: 'popup__input-error_active',
 });
+
