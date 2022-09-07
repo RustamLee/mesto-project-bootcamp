@@ -1,5 +1,6 @@
 
-import { popups } from './constants.js'
+import { popups } from './constants.js';
+
 
 export function closePopup(popup) {
   popup.classList.remove('popup_opened');

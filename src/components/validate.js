@@ -1,6 +1,5 @@
 
 //ВАЛИДАЦИЯ ФОРМ
-
 //обработчики ошибок
 export const showError = (formElement, inputElement, errorMessage, options) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -8,6 +7,7 @@ export const showError = (formElement, inputElement, errorMessage, options) => {
   errorElement.textContent = errorMessage;
   errorElement.classList.add(options.errorClass)
 };
+
 export const hideError = (formElement, inputElement, options) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(options.inputErrorClass);
@@ -29,6 +29,32 @@ export function hasInvalidInput(inputList) {
   });
 };
 
+export function disableSubmitButtot(buttonElement, { inactiveButtonClass }) {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.disabled = true;
+};
+export function enableSubmitButton(buttonElement, { inactiveButtonClass }) {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.disabled = false;
+};
+
+export const revalidationForm = (formElement, options) => {
+  const inputList = Array.from(formElement.querySelectorAll(options.inputSelector));
+  const buttonElement = formElement.querySelector(options.submitButtonSelector);
+  inputList.forEach((inputElement) => {
+    hideError(inputElement, options);
+  });
+  disableSubmitButtot(buttonElement, options);
+};
+
+export function toggleButtonState(inputList, buttonElement, options) {
+  if (hasInvalidInput(inputList)) {
+    disableSubmitButtot(buttonElement, options);
+  } else {
+    enableSubmitButton(buttonElement, options);
+  }
+};
+
 export const setEventListener = (formElement, options) => {
   const inputList = Array.from(formElement.querySelectorAll(options.inputSelector));
   const buttonElement = formElement.querySelector(options.submitButtonSelector);
@@ -46,15 +72,4 @@ export const enablevalidation = (options) => {
   formList.forEach((formElement) => {
     setEventListener(formElement, options);
   });
-};
-
-
-export function toggleButtonState(inputList, buttonElement, options) {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(options.inactiveButtonClass);
-    buttonElement.setAttribute("disabled", "disabled");
-  } else {
-    buttonElement.classList.remove(options.inactiveButtonClass);
-    buttonElement.removeAttribute("disabled");
-  }
 };

@@ -15,6 +15,6 @@ export const inputPlace = popupNewPlace.querySelector('#new-place-name');
 export const inputSrc = popupNewPlace.querySelector('#new-place-src');
 export const formProfile = popupProfile.querySelector('.popup__edit-profile');
 export const formNewPlace = popupNewPlace.querySelector('.popup__edit-profile');
-export const formAvatar = popupAvatar.querySelector('#edit-avatar');
+export const formAvatar = document.querySelector('#edit-avatar');
 export const inputAvatar = document.querySelector('#avatar-edit');
 export const avatarImage = document.querySelector('.profile__avatar');

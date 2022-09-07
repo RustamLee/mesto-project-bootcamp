@@ -1,9 +1,19 @@
 import '../../src/index.css';
-import { editProfile, popupProfile, popupNewPlace, newPlaceButton, yourName, nameInput, yourJob, jobInput, inputPlace, inputSrc, formNewPlace, formProfile, popupAvatar, popupAvatarEdit, formAvatar, inputAvatar, avatarImage, cardOwne, itemImage } from './constants.js';
+import { editProfile, popupProfile, popupNewPlace, newPlaceButton, yourName, nameInput, yourJob, jobInput, inputPlace, inputSrc, formNewPlace, formProfile, popupAvatar, popupAvatarEdit, formAvatar, inputAvatar, avatarImage, itemImage } from './constants.js';
 import { closePopup, openPopup } from './modal.js';
 import { getProfileInfo, getCards } from './api.js';
 import { createCard, handleLike } from './card.js';
 import { sentProfileInfo, sentNewCard, sentNewAvatar, deleteCardByOwner, deleteCard } from './api.js'
+import {revalidationForm, enablevalidation} from './validate.js';
+
+const formOptions = {
+  formSelector: '.popup__edit-profile',
+  inputSelector: '.popup__container-field',
+  submitButtonSelector: '.popup__container-button',
+  inactiveButtonClass: 'popup__container-button_disabled',
+  inputErrorClass: 'popup__container-field_error',
+  errorClass: 'popup__input-error_active',
+};
 
 //загрузка данных пользователя
 getProfileInfo();
@@ -11,6 +21,7 @@ getProfileInfo();
 //открытие попап редактирования аватар
 popupAvatarEdit.addEventListener('click', function (event) {
   inputAvatar.value = '';
+  revalidationForm(formAvatar, formOptions);
   openPopup(popupAvatar);
 });
 
@@ -29,6 +40,7 @@ formAvatar.addEventListener('submit', (event) => {
 editProfile.addEventListener('click', function (_event) {
   nameInput.value = yourName.textContent;
   jobInput.value = yourJob.textContent;
+  revalidationForm(formProfile, formOptions);
   openPopup(popupProfile);
 });
 
@@ -45,6 +57,7 @@ formProfile.addEventListener('submit', (event) => {
 newPlaceButton.addEventListener('click', function (_event) {
   inputPlace.value = '';
   inputSrc.value = '';
+  revalidationForm(formNewPlace, formOptions);
   openPopup(popupNewPlace);
 });
 
@@ -61,18 +74,5 @@ function saveNewCard(event) {
   closePopup(popupNewPlace);
 }
 
-
-//валидация форм
-import { showError, hideError, checkInputValidity, hasInvalidInput, toggleButtonState, setEventListener, enablevalidation } from './validate.js';
-import { Promise } from 'core-js';
-
 //options
-enablevalidation({
-  formSelector: '.popup__edit-profile',
-  inputSelector: '.popup__container-field',
-  submitButtonSelector: '.popup__container-button',
-  inactiveButtonClass: 'popup__container-button_disabled',
-  inputErrorClass: 'popup__container-field_error',
-  errorClass: 'popup__input-error_active',
-});
-
+enablevalidation(formOptions);
