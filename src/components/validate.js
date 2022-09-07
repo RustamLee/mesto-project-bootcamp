@@ -1,25 +1,26 @@
 
 //ВАЛИДАЦИЯ ФОРМ
 //обработчики ошибок
-export const showError = (formElement, inputElement, errorMessage, options) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+export const showError = (inputElement, options, errorMessage) => {
+  const errorElement = document.getElementById(`${inputElement.id}-error`);
+  console.log(errorElement);
   inputElement.classList.add(options.inputErrorClass);
+  errorElement.classList.add(options.errorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(options.errorClass)
 };
 
-export const hideError = (formElement, inputElement, options) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+export const hideError = (inputElement, options) => {
+  const errorElement = document.getElementById(`${inputElement.id}-error`);
   inputElement.classList.remove(options.inputErrorClass);
   errorElement.classList.remove(options.errorClass);
-  errorElement.textContent = "";
+  errorElement.textContent = '';
 };
 
-export const checkInputValidity = (formElement, inputElement, options) => {
+export const checkInputValidity = (inputElement, options) => {
   if (!inputElement.validity.valid) {
-    showError(formElement, inputElement, inputElement.validationMessage, options);
+    showError(inputElement, options, inputElement.validationMessage);
   } else {
-    hideError(formElement, inputElement, options);
+    hideError(inputElement, options);
   }
 };
 
@@ -29,15 +30,6 @@ export function hasInvalidInput(inputList) {
   });
 };
 
-export function disableSubmitButtot(buttonElement, { inactiveButtonClass }) {
-  buttonElement.classList.add(inactiveButtonClass);
-  buttonElement.disabled = true;
-};
-export function enableSubmitButton(buttonElement, { inactiveButtonClass }) {
-  buttonElement.classList.remove(inactiveButtonClass);
-  buttonElement.disabled = false;
-};
-
 export const revalidationForm = (formElement, options) => {
   const inputList = Array.from(formElement.querySelectorAll(options.inputSelector));
   const buttonElement = formElement.querySelector(options.submitButtonSelector);
@@ -45,6 +37,16 @@ export const revalidationForm = (formElement, options) => {
     hideError(inputElement, options);
   });
   disableSubmitButtot(buttonElement, options);
+};
+
+export function disableSubmitButtot(buttonElement, { inactiveButtonClass }) {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.disabled = true;
+};
+
+export function enableSubmitButton(buttonElement, { inactiveButtonClass }) {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.disabled = false;
 };
 
 export function toggleButtonState(inputList, buttonElement, options) {
@@ -61,7 +63,7 @@ export const setEventListener = (formElement, options) => {
   toggleButtonState(inputList, buttonElement, options);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement, options);
+      checkInputValidity(inputElement, options);
       toggleButtonState(inputList, buttonElement, options);
     });
   });

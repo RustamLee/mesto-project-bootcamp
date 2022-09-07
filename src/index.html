@@ -23,7 +23,7 @@
           <h2 class="popup__container-heading">Обновить аватар</h2>
           <label class="popup__input-box">
             <input id="avatar-edit" name="avatar-edit" type="url" class="popup__container-field" placeholder="Ссылка на картинку" required>
-            <span class="popup__input-error avatar-edit-error"></span>
+            <span class="popup__input-error avatar-edit-error" id="avatar-edit-error"></span>
           </label>
           <button name="save-avatar" id="save-avatar" type="submit" class="popup__container-button"
             aria-label="Save">Сохранить</button>
@@ -39,12 +39,12 @@
           <label class="popup__input-box">
             <input id="profile-name" name="profile-name" type="text" class="popup__container-field" required
               minlength="2" maxlength="40">
-            <span class="popup__input-error profile-name-error"></span>
+            <span class="popup__input-error profile-name-error" id="profile-name-error"></span>
           </label>
           <label class="popup__input-box">
             <input id="profile-job" name="profile-job" type="text" class="popup__container-field" required minlength="2"
               maxlength="200">
-            <span class="popup__input-error profile-job-error"></span>
+            <span class="popup__input-error profile-job-error" id="profile-job-error"></span>
           </label>
           <button name="save-profile" id="save-profile" type="submit" class="popup__container-button"
             aria-label="Save">Сохранить</button>
@@ -59,12 +59,12 @@
           <label class="popup__input-box">
             <input id="new-place-name" name="place-name" type="text" class="popup__container-field"
               placeholder="Название" required minlength="2" maxlength="30">
-            <span class="popup__input-error new-place-name-error"></span>
+            <span class="popup__input-error new-place-name-error" id="new-place-name-error"></span>
           </label>
           <label class="popup__input-box">
             <input id="new-place-src" name="place-src" type="url" class="popup__container-field"
               placeholder="Ссылка на картинку" required>
-            <span class="popup__input-error new-place-src-error"></span>
+            <span class="popup__input-error new-place-src-error" id="new-place-src-error"></span>
           </label>
           <button name="add-place" id="add-place" type="submit" class="popup__container-button"
             aria-label="Save">Создать</button>

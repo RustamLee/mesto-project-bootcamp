@@ -4,16 +4,8 @@ import { closePopup, openPopup } from './modal.js';
 import { getProfileInfo, getCards } from './api.js';
 import { createCard, handleLike } from './card.js';
 import { sentProfileInfo, sentNewCard, sentNewAvatar, deleteCardByOwner, deleteCard } from './api.js'
-import {revalidationForm, enablevalidation} from './validate.js';
+import {revalidationForm, enablevalidation, hideError, showError} from './validate.js';
 
-const formOptions = {
-  formSelector: '.popup__edit-profile',
-  inputSelector: '.popup__container-field',
-  submitButtonSelector: '.popup__container-button',
-  inactiveButtonClass: 'popup__container-button_disabled',
-  inputErrorClass: 'popup__container-field_error',
-  errorClass: 'popup__input-error_active',
-};
 
 //загрузка данных пользователя
 getProfileInfo();
@@ -75,4 +67,12 @@ function saveNewCard(event) {
 }
 
 //options
+export const formOptions = {
+  formSelector: '.popup__edit-profile',
+  inputSelector: '.popup__container-field',
+  submitButtonSelector: '.popup__container-button',
+  inactiveButtonClass: 'popup__container-button_disabled',
+  inputErrorClass: 'popup__container-field_error',
+  errorClass: 'popup__input-error_active',
+};
 enablevalidation(formOptions);
