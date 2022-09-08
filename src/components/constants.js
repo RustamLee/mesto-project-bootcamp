@@ -1,8 +1,11 @@
+export const contentItemTemplate = document.getElementById('content-item').content;
+export const popupWithImage = document.querySelector('.popup-image');
+export const popupImageBox = popupWithImage.querySelector('.popup-image__container');
+export const popupImageName = popupWithImage.querySelector('.popup-image__name');
 export const popups = document.querySelectorAll('.popup');
 export const editProfile = document.querySelector('.profile__edit-button');
 export const popupProfile = document.querySelector('.popup__profile');
 export const popupNewPlace = document.querySelector('.popup-new-place');
-export const popupWithImage = document.querySelector('.popup-image');
 export const popupAvatar = document.querySelector('.popup__avatar');
 export const popupAvatarEdit = document.querySelector('.profile__avatar-button');
 export const newPlaceButton = document.querySelector('.profile__add-button');

@@ -3,6 +3,13 @@ import { yourName, yourJob, avatarImage, contentItems, nameInput, jobInput, inpu
 import { createCard, likeCounter} from './card.js';
 export let userId;
 
+function checkResponse(res){
+  if (res.ok){
+    return res.json();
+  }
+  return Promise.reject (`Ошибка ${res.status}`);
+}
+
 //достаем данные пользователя с сервера
 export function getProfileInfo() {
   fetch('https://nomoreparties.co/v1/wbc-cohort-1/users/me', {
@@ -10,12 +17,7 @@ export function getProfileInfo() {
       authorization: '3dd89b95-5c6a-443c-a15c-23b145a16389'
     }
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then (checkResponse)
     .then((result) => {
       yourName.textContent = result.name;
       yourJob.textContent = result.about;
@@ -33,12 +35,7 @@ let getCards = fetch('https://nomoreparties.co/v1/wbc-cohort-1/cards', {
     authorization: '3dd89b95-5c6a-443c-a15c-23b145a16389'
   }
 })
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  })
+  .then (checkResponse)
   .then((result) => {
     result.forEach(item => {
       contentItems.prepend(createCard(item));
@@ -61,12 +58,7 @@ export function sentProfileInfo() {
       about: jobInput.value,
     })
   })
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  })
+  .then (checkResponse)
   .then((res) => {
     getProfileInfo();
   })
@@ -85,12 +77,7 @@ export function sentNewCard() {
       link: inputSrc.value,
     })
   })
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-      return Promise.reject(`Ошибка: ${res.status}`);
-  })
+  .then (checkResponse)
   .then((res) => {
     contentItems.prepend(createCard(res));
   })
@@ -108,12 +95,7 @@ export function sentNewAvatar() {
       avatar: inputAvatar.value,
     })
   })
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  })
+  .then (checkResponse)
   .then((res) => {
     console.log(res);
   })
@@ -138,12 +120,7 @@ export function deleteCard (id){
       'Content-Type': 'application/json'
     },
   })
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  })
+  .then (checkResponse)
 };
 
 //отправка лайка
@@ -157,12 +134,7 @@ export function sentLike(newContentItem) {
     body: JSON.stringify({
     })
   })
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-      return Promise.reject(`Ошибка: ${res.status}`);
-  })
+  .then (checkResponse)
   .then((res) => {
     console.log(res.likes.length);
     const likeCounter = newContentItem.querySelector('.content__like-counter');
@@ -180,12 +152,7 @@ export function deleteLike(newContentItem) {
     body: JSON.stringify({
     })
   })
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-      return Promise.reject(`Ошибка: ${res.status}`);
-  })
+  .then (checkResponse)
   .then((res) => {
     console.log(res.likes.length);
     const likeCounter = newContentItem.querySelector('.content__like-counter');

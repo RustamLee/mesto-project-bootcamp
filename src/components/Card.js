@@ -1,11 +1,10 @@
 //создание карточки
 
-import { initialCards, contentItems, formNewPlace, popupNewPlace, popupWithImage } from "./constants.js";
+import { contentItemTemplate, popupImageBox, popupImageName, initialCards, contentItems, formNewPlace, popupNewPlace, popupWithImage } from "./constants.js";
 import { closePopup, openPopup } from "./modal.js";
 import { sentNewCard, userId, deleteCard, deleteCardByOwner, deleteLike, sentLike } from "./api.js";
 
 export function createCard(item) {
-  const contentItemTemplate = document.getElementById('content-item').content;
   const newContentItem = contentItemTemplate.querySelector('.content__item').cloneNode(true);
   const itemImage = newContentItem.querySelector('.content__item-image');
   const imageTrash = newContentItem.querySelector('.content__trash');
@@ -41,8 +40,8 @@ export function createCard(item) {
     })
   }
   itemImage.addEventListener('click', function (event) {
-    popupWithImage.querySelector('.popup-image__container').src = event.target.src;
-    popupWithImage.querySelector('.popup-image__name').textContent = event.target.alt;
+    popupImageBox.src = event.target.src;
+    popupImageName.textContent = event.target.alt;
     openPopup(popupWithImage);
   })
   return newContentItem;

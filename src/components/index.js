@@ -19,11 +19,10 @@ popupAvatarEdit.addEventListener('click', function (event) {
 
 //функция замены ссылки на аватар
 formAvatar.addEventListener('submit', (event) => {
-  const saveAvatar = formAvatar.querySelector('#save-avatar');
-  saveAvatar.textContent = 'Сохранение...';
+  event.submitter.textContent = 'Сохранение...';
   event.preventDefault();
   sentNewAvatar();
-  saveAvatar.textContent = 'Сохранить';
+  event.submitter.textContent = 'Сохранить';
   avatarImage.style.backgroundImage = `url(${inputAvatar.value})`;
   closePopup(popupAvatar);
 });
@@ -61,8 +60,7 @@ function saveNewCard(event) {
   event.preventDefault();
   sentNewCard();
   saveNewPlase.textContent = 'Сохранить';
-  inputPlace.value = '';
-  inputSrc.value = '';
+  event.target.reset();
   closePopup(popupNewPlace);
 }
 
