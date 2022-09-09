@@ -2,8 +2,8 @@
 
 import { contentItemTemplate, popupImageBox, popupImageName, initialCards, contentItems, formNewPlace, popupNewPlace, popupWithImage } from "./constants.js";
 import { closePopup, openPopup } from "./modal.js";
-import { sentNewCard, deleteCard, deleteCardByOwner, deleteLike, sentLike } from "./api.js";
-export let userId;
+import { sentNewCard, deleteLike, sentLike, deleteCard } from "./api.js";
+import {userId} from './index.js'
 
 export function createCard(item) {
   const newContentItem = contentItemTemplate.querySelector('.content__item').cloneNode(true);
@@ -16,14 +16,25 @@ export function createCard(item) {
   itemImage.src = item.link;
   newContentItem.id = item._id;
   likeCounter.textContent = Number(item.likes.length);
+
   //счетчик лайков
   likeButton.addEventListener('click', (event => {
     if (likeButton.classList.contains('content__like_active')) {
       likeButton.classList.remove('content__like_active');
-      deleteLike(newContentItem);
+      deleteLike(newContentItem)
+      .then((res) => {
+        console.log(res.likes.length);
+        const likeCounter = newContentItem.querySelector('.content__like-counter');
+        likeCounter.textContent = Number(res.likes.length);
+      })
     } else {
       likeButton.classList.add('content__like_active');
-      sentLike(newContentItem);
+      sentLike(newContentItem)
+      .then((res) => {
+        console.log(res.likes.length);
+        const likeCounter = newContentItem.querySelector('.content__like-counter');
+        likeCounter.textContent = Number(res.likes.length);
+      })
     }
   }));
   if (item.likes.length !== 0) {
@@ -48,4 +59,13 @@ export function createCard(item) {
   return newContentItem;
 };
 
+export function deleteCardByOwner (item){
+  deleteCard (item.id)
+ .then (function() {
+   item.remove();
+ })
+ .catch((err) => {
+   console.log(err)
+ })
+};
 

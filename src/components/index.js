@@ -1,13 +1,14 @@
 import '../../src/index.css';
 import { editProfile, popupProfile, popupNewPlace, newPlaceButton, yourName, nameInput, yourJob, jobInput, inputPlace, inputSrc, formNewPlace, formProfile, popupAvatar, popupAvatarEdit, formAvatar, inputAvatar, avatarImage, itemImage, contentItems } from './constants.js';
 import { closePopup, openPopup } from './modal.js';
-import { getProfileInfo, getCards} from './api.js';
-import { createCard, userId} from './card.js';
-import { sentProfileInfo, sentNewCard, sentNewAvatar, deleteCardByOwner, deleteCard, checkResponse } from './api.js'
-import { revalidationForm, enablevalidation, hideError, showError} from './validate.js';
+import { getProfileInfo, getCards } from './api.js';
+import { createCard, deleteCardByOwner } from './card.js';
+import { sentProfileInfo, sentNewCard, sentNewAvatar, deleteCard, checkResponse } from './api.js'
+import { revalidationForm, enablevalidation, hideError, showError } from './validate.js';
+export let userId;
 
 //загрузка данных пользователя и карточек
-  Promise.all ([getProfileInfo(), getCards()])
+Promise.all([getProfileInfo(), getCards()])
   .then(([userData, cards]) => {
     yourName.textContent = userData.name;
     yourJob.textContent = userData.about;
@@ -32,10 +33,17 @@ popupAvatarEdit.addEventListener('click', function (event) {
 formAvatar.addEventListener('submit', (event) => {
   event.submitter.textContent = 'Сохранение...';
   event.preventDefault();
-  sentNewAvatar();
-  event.submitter.textContent = 'Сохранить';
-  avatarImage.style.backgroundImage = `url(${inputAvatar.value})`;
-  closePopup(popupAvatar);
+  sentNewAvatar()
+    .then((res) => {
+      avatarImage.style.backgroundImage = `url(${inputAvatar.value})`;
+      closePopup(popupAvatar);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .finally(() => {
+      event.submitter.textContent = 'Сохранить';
+    })
 });
 
 //popup редактирования профиля
@@ -50,9 +58,18 @@ formProfile.addEventListener('submit', (event) => {
   const saveProfile = formProfile.querySelector('#save-profile');
   saveProfile.textContent = 'Сохранение...';
   event.preventDefault();
-  sentProfileInfo();
-  saveProfile.textContent = 'Сохранить';
-  closePopup(popupProfile);
+  sentProfileInfo()
+    .then(() => {
+      yourName.textContent = nameInput.value;
+      yourJob.textContent = jobInput.value;
+      closePopup(popupProfile);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .finally(() => {
+      saveProfile.textContent = 'Сохранить';
+    })
 });
 
 //добавление нового места
@@ -69,10 +86,18 @@ function saveNewCard(event) {
   const saveNewPlase = formNewPlace.querySelector('#add-place');
   saveNewPlase.textContent = 'Сохранение...';
   event.preventDefault();
-  sentNewCard();
-  saveNewPlase.textContent = 'Сохранить';
-  event.target.reset();
-  closePopup(popupNewPlace);
+  sentNewCard()
+    .then((res) => {
+      contentItems.prepend(createCard(res));
+      closePopup(popupNewPlace);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .finally(() => {
+      saveNewPlase.textContent = 'Сохранить';
+      event.target.reset();
+    })
 }
 
 //options
@@ -85,3 +110,4 @@ export const formOptions = {
   errorClass: 'popup__input-error_active',
 };
 enablevalidation(formOptions);
+
