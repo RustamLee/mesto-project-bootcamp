@@ -2,7 +2,8 @@
 
 import { contentItemTemplate, popupImageBox, popupImageName, initialCards, contentItems, formNewPlace, popupNewPlace, popupWithImage } from "./constants.js";
 import { closePopup, openPopup } from "./modal.js";
-import { sentNewCard, userId, deleteCard, deleteCardByOwner, deleteLike, sentLike } from "./api.js";
+import { sentNewCard, deleteCard, deleteCardByOwner, deleteLike, sentLike } from "./api.js";
+export let userId;
 
 export function createCard(item) {
   const newContentItem = contentItemTemplate.querySelector('.content__item').cloneNode(true);

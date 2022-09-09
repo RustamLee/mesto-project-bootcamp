@@ -1,14 +1,25 @@
 import '../../src/index.css';
-import { editProfile, popupProfile, popupNewPlace, newPlaceButton, yourName, nameInput, yourJob, jobInput, inputPlace, inputSrc, formNewPlace, formProfile, popupAvatar, popupAvatarEdit, formAvatar, inputAvatar, avatarImage, itemImage } from './constants.js';
+import { editProfile, popupProfile, popupNewPlace, newPlaceButton, yourName, nameInput, yourJob, jobInput, inputPlace, inputSrc, formNewPlace, formProfile, popupAvatar, popupAvatarEdit, formAvatar, inputAvatar, avatarImage, itemImage, contentItems } from './constants.js';
 import { closePopup, openPopup } from './modal.js';
-import { getProfileInfo, getCards } from './api.js';
-import { createCard, handleLike } from './card.js';
-import { sentProfileInfo, sentNewCard, sentNewAvatar, deleteCardByOwner, deleteCard } from './api.js'
-import {revalidationForm, enablevalidation, hideError, showError} from './validate.js';
+import { getProfileInfo, getCards} from './api.js';
+import { createCard, userId} from './card.js';
+import { sentProfileInfo, sentNewCard, sentNewAvatar, deleteCardByOwner, deleteCard, checkResponse } from './api.js'
+import { revalidationForm, enablevalidation, hideError, showError} from './validate.js';
 
-
-//загрузка данных пользователя
-getProfileInfo();
+//загрузка данных пользователя и карточек
+  Promise.all ([getProfileInfo(), getCards()])
+  .then(([userData, cards]) => {
+    yourName.textContent = userData.name;
+    yourJob.textContent = userData.about;
+    avatarImage.style.backgroundImage = `url(${userData.avatar})`;
+    userId = userData._id;
+    cards.forEach(item => {
+      contentItems.prepend(createCard(item))
+    })
+  })
+  .catch((err) => {
+    console.log(err)
+  });
 
 //открытие попап редактирования аватар
 popupAvatarEdit.addEventListener('click', function (event) {

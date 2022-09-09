@@ -1,53 +1,37 @@
 
 import { yourName, yourJob, avatarImage, contentItems, nameInput, jobInput, inputPlace, inputSrc, inputAvatar, imageTrash, itemImage } from './constants.js';
 import { createCard, likeCounter} from './card.js';
-export let userId;
 
-function checkResponse(res){
+export function checkResponse(res){
   if (res.ok){
     return res.json();
   }
   return Promise.reject (`Ошибка ${res.status}`);
-}
+};
 
 //достаем данные пользователя с сервера
 export function getProfileInfo() {
-  fetch('https://nomoreparties.co/v1/wbc-cohort-1/users/me', {
+  return fetch('https://nomoreparties.co/v1/wbc-cohort-1/users/me', {
     headers: {
       authorization: '3dd89b95-5c6a-443c-a15c-23b145a16389'
     }
   })
-    .then (checkResponse)
-    .then((result) => {
-      yourName.textContent = result.name;
-      yourJob.textContent = result.about;
-      avatarImage.style.backgroundImage = `url(${result.avatar})`;
-      userId = result._id;
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  .then(checkResponse)
 };
 
 //достаем карточки с сервера
-let getCards = fetch('https://nomoreparties.co/v1/wbc-cohort-1/cards', {
+export function getCards () {
+ return fetch('https://nomoreparties.co/v1/wbc-cohort-1/cards', {
   headers: {
     authorization: '3dd89b95-5c6a-443c-a15c-23b145a16389'
   }
 })
-  .then (checkResponse)
-  .then((result) => {
-    result.forEach(item => {
-      contentItems.prepend(createCard(item));
-    })
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+.then(checkResponse)
+};
 
 //отправка данных пользователя на сервер
 export function sentProfileInfo() {
-  fetch('https://nomoreparties.co/v1/wbc-cohort-1/users/me', {
+   fetch('https://nomoreparties.co/v1/wbc-cohort-1/users/me', {
     method: 'PATCH',
     headers: {
       authorization: '3dd89b95-5c6a-443c-a15c-23b145a16389',
@@ -59,9 +43,6 @@ export function sentProfileInfo() {
     })
   })
   .then (checkResponse)
-  .then((res) => {
-    getProfileInfo();
-  })
 }
 
 //добавление новой карточки
