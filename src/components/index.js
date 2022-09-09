@@ -14,7 +14,7 @@ Promise.all([getProfileInfo(), getCards()])
     yourJob.textContent = userData.about;
     avatarImage.style.backgroundImage = `url(${userData.avatar})`;
     userId = userData._id;
-    cards.forEach(item => {
+    cards.reverse().forEach(item => {
       contentItems.prepend(createCard(item))
     })
   })

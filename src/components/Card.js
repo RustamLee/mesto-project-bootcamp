@@ -20,20 +20,24 @@ export function createCard(item) {
   //счетчик лайков
   likeButton.addEventListener('click', (event => {
     if (likeButton.classList.contains('content__like_active')) {
-      likeButton.classList.remove('content__like_active');
       deleteLike(newContentItem)
       .then((res) => {
-        console.log(res.likes.length);
+        likeButton.classList.remove('content__like_active');
         const likeCounter = newContentItem.querySelector('.content__like-counter');
         likeCounter.textContent = Number(res.likes.length);
+      })
+      .catch((err) => {
+        console.log(err)
       })
     } else {
       likeButton.classList.add('content__like_active');
       sentLike(newContentItem)
       .then((res) => {
-        console.log(res.likes.length);
         const likeCounter = newContentItem.querySelector('.content__like-counter');
         likeCounter.textContent = Number(res.likes.length);
+      })
+      .catch((err) => {
+        console.log(err)
       })
     }
   }));
@@ -53,6 +57,7 @@ export function createCard(item) {
   }
   itemImage.addEventListener('click', function (event) {
     popupImageBox.src = event.target.src;
+    popupImageBox.alt = event.target.alt;
     popupImageName.textContent = event.target.alt;
     openPopup(popupWithImage);
   })
