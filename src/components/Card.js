@@ -30,9 +30,9 @@ export function createCard(item) {
         console.log(err)
       })
     } else {
-      likeButton.classList.add('content__like_active');
       sentLike(newContentItem)
       .then((res) => {
+        likeButton.classList.add('content__like_active');
         const likeCounter = newContentItem.querySelector('.content__like-counter');
         likeCounter.textContent = Number(res.likes.length);
       })
